@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f1020;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .mobile-card {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      background: rgba(15, 16, 32, 0.95);
+      border-left: 1px solid rgba(255, 182, 193, 0.2);
+      border-right: 1px solid rgba(255, 182, 193, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 20px;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out forwards;
+      flex-grow: 1;
+      justify-content: center;
+    }
+    .slide.active { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-slide {
+      position: relative;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+        url('1000032654.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      padding: 40px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      width: 100%;
+    }
+    .hero-content {
+      background: rgba(15, 16, 32, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 24px;
+      border-radius: 16px;
+      width: 100%;
+      border: 1px solid rgba(255, 182, 193, 0.3);
+    }
+    .tag {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff758c;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .img-frame {
+      width: 100%;
+      max-height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255, 182, 193, 0.3);
+      margin-bottom: 16px;
+    }
+    .img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .caption {
+      font-size: 0.95rem;
+      color: #f1f2f6;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .letter-box {
+      background: #fffef0;
+      color: #2c3e50;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      text-align: left;
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      max-height: 60vh;
+      overflow-y: auto;
+      border: 1px solid #f1e5ac;
+      margin-bottom: 15px;
+    }
+    .letter-box p { margin-bottom: 10px; }
+    .question-group {
+      text-align: left;
+      width: 100%;
+      margin: 12px 0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 182, 193, 0.2);
+    }
+    .question-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: #ff758c;
+      font-weight: 600;
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #fff;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,182,193,0.3);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    select option { color: #000; }
+    .nav-btn {
+      background: linear-gradient(90deg, #ff758c, #ff7eb3);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+      width: 100%;
+    }
+    .nav-btn:hover { transform: translateY(-1px); }
+    .result-box {
+      display: none;
+      margin-top: 15px;
+      padding: 16px;
+      background: rgba(255, 117, 140, 0.2);
+      border: 1px solid #ff758c;
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-card">
+
+    <div class="slide active" id="slide-1">
+      <div class="hero-slide">
+        <div class="hero-content">
+          <div class="tag">Special Birthday Wish ✨</div>
+          <h2>Happy Birthday My Love ❤️</h2>
+          <p class="caption">A small journey through our most beautiful moments together.</p>
+          <button class="nav-btn" onclick="nextSlide(2)">Open Your Surprise 🎁</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-2">
+      <div class="tag">Chapter I 📸</div>
+      <h2>Where It All Began</h2>
+      <div class="img-frame">
+        <img src="31312.jpg" alt="First Date Mirror Selfie">
+      </div>
+      <p class="caption">Our mirror selfie on our very first date. The start of my favorite journey. ❤️</p>
+      <button class="nav-btn" onclick="nextSlide(3)">Next Memory ➡️</button>
+    </div>
+
+    <div class="slide" id="slide-3">
+      <div class="tag">Chapter II 💍</div>
+      <h2>Our Sacred Promise</h2>
+      <div class="img-frame">
+        <img src="39753.jpg" alt="Our Kabin Day">
+      </div>
+      <p class="caption">The sweet moment of our Kabin — promising forever to each other. ✨</p>
+      <button class="nav-btn" onclick="nextSlide(4)">Next Memory ➡️</button>
+    </div>
+
+    <div class="slide" id="slide-4">
+      <div class="tag">Chapter III ❤️</div>
+      <h2>Two Hearts, One Soul</h2>
+      <div class="img-frame">
+        <img src="1000004034.jpg" alt="Marriage Day">
+      </div>
+      <p class="caption">Our wedding day — the happiest step into our life together. 🌹</p>
+      <button class="nav-btn" onclick="nextSlide(5)">Read My Letter 💌</button>
+    </div>
+
+    <div class="slide" id="slide-5">
+      <div class="tag">A Special Note 📜</div>
+      <h2>For My Beloved Wife</h2>
+      <div class="letter-box">
+        <p>Happy Birthday to the most precious person in my life, my wife, my best friend, and my greatest blessing. ❤️</p>
+        <p>Thank you for always standing beside me, believing in me, and supporting me through every good and difficult moment. Your endless love, patience, and all the sacrifices you make for our life together mean more to me than words can ever express.</p>
+        <p>I may not always say it, but I notice everything you do for me and for us. I’m truly grateful to have a woman who loves me so deeply and continues to stand by my side no matter what.</p>
+        <p>You make my life brighter, my heart happier, and my world complete. I pray that Allah blesses you with endless happiness, good health, peace, and everything your heart wishes for.</p>
+        <p>Happy Birthday, my love. ❤️<br>I love you more than words can describe, and I’m grateful for you today, tomorrow, and always. ❤️</p>
+      </div>
+      <button class="nav-btn" onclick="nextSlide(6)">Plan Our Birthday Date 🎟️</button>
+    </div>
+
+    <div class="slide" id="slide-6">
+      <div class="tag">Date Proposal 🍽️</div>
+      <h2>Let's Celebrate!</h2>
+
+      <div class="question-group">
+        <label>Do you agree to go on a date with me? ✨</label>
+        <select id="agreement">
+          <option value="Yes! Absolutely ❤️">Yes! Absolutely ❤️</option>
+          <option value="A 100% Yes! 🥰">A 100% Yes! 🥰</option>
+        </select>
+      </div>
+
+      <div class="question-group">
+        <label>Time Preference:</label>
+        <select id="timeSlot">
+          <option value="Lunch + Outing Date ☀️">Lunch + Outing Date ☀️</option>
+          <option value="Dinner + Outing Date 🌙">Dinner + Outing Date 🌙</option>
+        </select>
+      </div>
+
+      <div class="question-group">
+        <label>Food Choices (Select any you like!):</label>
+        <div class="checkbox-grid">
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Pizza 🍕"> Pizza 🍕</label>
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Burger 🍔"> Burger 🍔</label>
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Pasta 🍝"> Pasta 🍝</label>
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Meatbox 🥩"> Meatbox 🥩</label>
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Rice Bowl 🍚"> Rice Bowl 🍚</label>
+          <label class="checkbox-label"><input type="checkbox" name="food" value="Others ✨"> Others ✨</label>
+        </div>
+      </div>
+
+      <button class="nav-btn" onclick="submitDate()">Submit Choices 💌</button>
+      <div class="result-box" id="result-box"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function nextSlide(slideNumber) {
+      document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+      document.getElementById('slide-' + slideNumber).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function submitDate() {
+      const agree = document.getElementById('agreement').value;
+      const time = document.getElementById('timeSlot').value;
+
+      const selectedFoods = [];
+      document.querySelectorAll('input[name="food"]:checked').forEach((checkbox) => {
+        selectedFoods.push(checkbox.value);
+      });
+
+      const foodText = selectedFoods.length > 0
+        ? selectedFoods.join(', ')
+        : 'Surprise me! 🥰';
+
+      const resultBox = document.getElementById('result-box');
+      resultBox.style.display = 'block';
+
+      resultBox.innerHTML = `<strong>Yay! Date Confirmed! 🎉</strong><br>
+        Response: ${agree}<br>
+        Time: ${time}<br>
+        Craving: ${foodText}<br><br>
+        <span style="font-size: 1.1rem; color: #ff758c; font-weight: bold;">I Love you Pochu ❤️</span>`;
+    }
+  </script>
+</body>
+</html>
