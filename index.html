@@ -285,30 +285,31 @@
     function nextSlide(slideNumber) {
       document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
       document.getElementById('slide-' + slideNumber).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function submitDate() {
       const agree = document.getElementById('agreement').value;
       const time = document.getElementById('timeSlot').value;
-
-      const selectedFoods = [];
+      
+      let selectedFoods = [];
       document.querySelectorAll('input[name="food"]:checked').forEach((checkbox) => {
         selectedFoods.push(checkbox.value);
       });
 
-      const foodText = selectedFoods.length > 0
-        ? selectedFoods.join(', ')
-        : 'Surprise me! 🥰';
+      const foodText = selectedFoods.length > 0 ? selectedFoods.join(', ') : 'Surprise me! 🥰';
+
+      // Create WhatsApp message text
+      const message = `Yay! Date Confirmed! 🎉%0AResponse: ${agree}%0ATime: ${time}%0ACraving: ${foodText}%0A%0AI Love you Pochu ❤️`;
+      
+      // Replace YOUR_PHONE_NUMBER with your actual WhatsApp number with country code (e.g., 8801749779739 without the + sign)
+      const myPhoneNumber = "8801749779739"; 
+      
+      // Open WhatsApp chat with pre-filled message
+      window.open(`https://wa.me/${myPhoneNumber}?text=${message}`, '_blank');
 
       const resultBox = document.getElementById('result-box');
       resultBox.style.display = 'block';
-
-      resultBox.innerHTML = `<strong>Yay! Date Confirmed! 🎉</strong><br>
-        Response: ${agree}<br>
-        Time: ${time}<br>
-        Craving: ${foodText}<br><br>
-        <span style="font-size: 1.1rem; color: #ff758c; font-weight: bold;">I Love you Pochu ❤️</span>`;
+      resultBox.innerHTML = `<strong>Redirecting to WhatsApp! 🚀</strong><br>Tap send to share your choices with me, my love! ❤️`;
     }
   </script>
 </body>
